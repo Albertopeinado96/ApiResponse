@@ -52,11 +52,12 @@ trait ApiResponse
     /**
      * Cannot process the request
      *
+     * @param $errors
      * @return JsonResponse
      */
-    protected function badRequestResponse(): JsonResponse
+    protected function badRequestResponse($errors = []): JsonResponse
     {
-        return response()->json([], 400);
+        return response()->json(['errors' => $errors], 400);
     }
 
     /**
@@ -65,9 +66,9 @@ trait ApiResponse
      * @param $errors
      * @return JsonResponse
      */
-    protected function unauthorisedResponse($errors): JsonResponse
+    protected function unauthorisedResponse($errors = []): JsonResponse
     {
-        return response()->json($errors, 401);
+        return response()->json(['errors' => $errors], 401);
     }
 
     /**
@@ -76,9 +77,9 @@ trait ApiResponse
      * @param $errors
      * @return JsonResponse
      */
-    protected function forbiddenResponse($errors): JsonResponse
+    protected function forbiddenResponse($errors = []): JsonResponse
     {
-        return response()->json($errors, 403);
+        return response()->json(['errors' => $errors], 403);
     }
 
     /**
@@ -87,9 +88,9 @@ trait ApiResponse
      * @param $errors
      * @return JsonResponse
      */
-    protected function notFoundResponse($errors): JsonResponse
+    protected function notFoundResponse($errors = []): JsonResponse
     {
-        return response()->json($errors, 404);
+        return response()->json(['errors' => $errors], 404);
     }
 
     /**
@@ -98,9 +99,9 @@ trait ApiResponse
      * @param $errors
      * @return JsonResponse
      */
-    protected function notAllowedResponse($errors): JsonResponse
+    protected function notAllowedResponse($errors = []): JsonResponse
     {
-        return response()->json($errors, 405);
+        return response()->json(['errors' => $errors], 405);
     }
 
     /**
@@ -109,9 +110,9 @@ trait ApiResponse
      * @param $errors
      * @return JsonResponse
      */
-    protected function requestTimeoutResponse($errors): JsonResponse
+    protected function requestTimeoutResponse($errors = []): JsonResponse
     {
-        return response()->json($errors, 408);
+        return response()->json(['errors' => $errors], 408);
     }
 
     /**
@@ -120,9 +121,9 @@ trait ApiResponse
      * @param $errors
      * @return JsonResponse
      */
-    protected function conflictResponse($errors): JsonResponse
+    protected function conflictResponse($errors = []): JsonResponse
     {
-        return response()->json($errors, 408);
+        return response()->json(['errors' => $errors], 408);
     }
 
     /**
@@ -131,9 +132,9 @@ trait ApiResponse
      * @param $errors
      * @return JsonResponse
      */
-    protected function unsupportedMediaTypeResponse($errors): JsonResponse
+    protected function unsupportedMediaTypeResponse($errors = []): JsonResponse
     {
-        return response()->json($errors, 415);
+        return response()->json(['errors' => $errors], 415);
     }
 
     /**
@@ -142,9 +143,9 @@ trait ApiResponse
      * @param $errors
      * @return JsonResponse
      */
-    protected function internalServerErrorResponse($errors): JsonResponse
+    protected function internalServerErrorResponse($errors = []): JsonResponse
     {
-        return response()->json($errors, 500);
+        return response()->json(['errors' => $errors], 500);
     }
 
     /**
@@ -153,8 +154,8 @@ trait ApiResponse
      * @param $errors
      * @return JsonResponse
      */
-    protected function methodNotImplementedResponse($errors): JsonResponse
+    protected function methodNotImplementedResponse($errors = []): JsonResponse
     {
-        return response()->json($errors, 501);
+        return response()->json(['errors' => $errors], 501);
     }
 }

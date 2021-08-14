@@ -123,7 +123,7 @@ trait ApiResponse
      */
     protected function conflictResponse($errors = []): JsonResponse
     {
-        return response()->json(['errors' => $errors], 408);
+        return response()->json(['errors' => $errors], 409);
     }
 
     /**
